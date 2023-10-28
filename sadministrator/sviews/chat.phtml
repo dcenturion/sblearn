@@ -1,0 +1,107 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/sadministrator/sbookstores/captcha/recaptcha_keys.php');
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> 
+
+
+		<title><?php echo $Title; ?></title>
+		<meta name="title" content ="<?php echo $Title_Site; ?>">
+		<meta name="author" content="<?php echo $Domain; ?>">
+		<meta name="msapplication-TileColor" content="#000"> 
+		<meta name="theme-color" content="#ffffff">
+		<meta name="googlebot" content="index, follow"> 	
+		<meta name="robots" content="index,follow">
+		<meta name="description" content="<?php echo $Descripcion; ?>">
+		<meta name="keywords" content="<?php echo $Palabras_Claves; ?>">
+        <link rel="canonical" href="<?php echo $Url; ?>">		
+		<link rel="apple-touch-icon" sizes="180x180" href="/sadministrator/simages/apple-touch-icon.png"> 
+		<link rel="icon" type="image/png" sizes="32x32" href="/sadministrator/simages/favicon-32x32.png"> 
+		<link rel="icon" type="image/png" sizes="16x16" href="/sadministrator/simages/favicon-16x16.png"> 
+
+
+		
+		<!-- SITE TITLE -->		
+        <link rel="stylesheet" href="<?php echo $Domain; ?>/sadministrator/sstyles/jquery-ui.css" rel="stylesheet">
+							
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet">
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/sadministrator/sstyles/vendor.min.css">
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/sadministrator/sstyles/cosmos.min.css?var=<?php echo $Ramdon_V; ?>">
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/sadministrator/sstyles/application.min.css">
+		
+		<link rel="stylesheet" type="text/css" href="<?php echo $Domain; ?>/sadministrator/sstyles/alertify.bootstrap.css" media="all">
+		<link rel="stylesheet" type="text/css" href="<?php echo $Domain; ?>/sadministrator/sstyles/alertify.core.css" media="all">
+		<link rel="stylesheet" type="text/css" href="<?php echo $Domain; ?>/sadministrator/sstyles/alertify.default.css" media="all">
+		<link rel="stylesheet" type="text/css" href="<?php echo $Domain; ?>/sadministrator/sstyles/style_local.css?var=<?php echo $Ramdon_V; ?>" media="all">
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/cdatetime/css/bootstrap-material-datetimepicker.css" />
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/cdatetime/css/bootstrap-material-datetimepicker.css" />
+		
+        <link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/reproductor-video/youtube/dist/css/jquery.mb.YTPlayer.min.css" >
+        <link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/reproductor-video/edit-front.css" >
+	    <link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/slide/assets/css/main.css">	
+		<!-- Bootstrap styles -->
+	
+
+		<!-- Generic page styles -->
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/upload/css/style.css">
+		<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+		<link rel="stylesheet" href="/splugin/upload/css/jquery.fileupload.css">		
+
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/jquery-2.1.1.min.js"></script>		
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/vendor.min.js"></script>	
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/functions.min.js"></script>		
+
+		<script src="<?php echo $Domain; ?>/splugin/ckeditor/ckeditor.js"></script>
+
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/functions.min.js"></script>					
+				
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+		<script type="module">
+		  // Import the functions you need from the SDKs you need
+		  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
+		  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-analytics.js";
+		  // TODO: Add SDKs for Firebase products that you want to use
+		  // https://firebase.google.com/docs/web/setup#available-libraries
+
+		  // Your web app's Firebase configuration
+		  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		  const firebaseConfig = {
+			apiKey: "AIzaSyCGaJ8DXPN3SK3iAeeC3RXrT6i6mXm8Zjk",
+			authDomain: "chat-yachai.firebaseapp.com",
+			databaseURL: "https://chat-yachai.firebaseio.com",
+			projectId: "chat-yachai",
+			storageBucket: "chat-yachai.appspot.com",
+			messagingSenderId: "684972069719",
+			appId: "1:684972069719:web:d33ccddda0ce0eb0b9e412",
+			measurementId: "G-C77VG93SBJ"
+		  };
+
+		  // Initialize Firebase
+		  const app = initializeApp(firebaseConfig);
+		  const analytics = getAnalytics(app);
+		</script>
+    </head>
+	<body>
+	     
+		 aaaa
+
+					
+				
+	
+
+
+	 	<!-- fancybox js -->
+    </body>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+
+</html>

@@ -1,0 +1,155 @@
+  	<!-- START CONTENT -->
+    <section id="content">
+        
+        <!--breadcrumbs start-->
+        <div id="breadcrumbs-wrapper">
+            <!-- Search for small screen -->
+            <div class="header-search-wrapper grey hide-on-large-only">
+                <i class="mdi-action-search active"></i>
+                <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize">
+            </div>
+          <div class="container">
+            <div class="row">
+              <div class="col s12 m12 l12">
+			  
+        
+				
+				<div class="row" style="float:left;width:100%;">
+					<div class="cells" style="float:left">
+						<h5 class="breadcrumbs-title">Administración de servicios</h5>
+						<ol class="breadcrumbs">
+							<li><a href="index.html">Dashboard</a></li>
+							<li><a href="#">Ventas</a></li>
+							<li class="active">Servicios</li>
+						</ol>
+					</div>				
+				
+					<div class="cells" style="float:right;padding: 1em;">
+					 <!-- <a class="btn-floating btn-large red modal-trigger" href="#modal1">
+						<i class="mdi-editor-border-color"></i>
+					  </a>-->
+					  <a class="waves-effect waves-light btn modal-trigger  light-blue" href="#modal1"  id="btn_crear_modal">Crear</a>
+					  <a class="waves-effect waves-light btn modal-trigger  light-blue" href="#modal1">Buscar</a>
+					</div>
+			    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--breadcrumbs end-->
+
+		<div id="modal1" class="modal">
+		</div>
+
+        <!--start container-->
+        <div class="container">
+          <div class="section">
+            <!--DataTables example-->
+            <div id="table-datatables">
+              <div class="row">
+                <div class="col s12">
+                  <table id="data-table-simple" class="responsive-table display" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Usuario <br> Creación</th>
+                            <th>Fecha <br> Actualización</th>
+							<th>Acción</th>
+                        </tr>
+                    </thead>
+                 
+                    <tfoot>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Estado</th>
+                            <th>Precio</th>
+                            <th>Usuario <br> Creación</th>
+                            <th>Fecha <br> Actualización</th>
+                            <th>Acción</th>
+                        </tr>
+                    </tfoot>
+                 
+                    <tbody>
+					    <?php 
+					    foreach ( $this->listado as $result ) {
+						?>
+						<tr>
+						<td><?php echo $result["Nombre"]; ?></td>
+						<td><?php echo $result["Estado"]; ?></td>
+						<td><?php echo $result["Precio"]; ?></td>
+						<td><?php echo $result["UsuarioActualizacion"]; ?></td>
+						<td><?php echo $result["FechaHoraActualizacion"]; ?></td>
+						<td>
+						<a href="#modal1" id="<?= $result["Codigo"]; ?>" class="btn_reporte btn-floating waves-effect waves-light green modal-trigger" ><i class="mdi-editor-mode-edit"></i></a>
+						<a href="#modal1" id="<?= $result["Codigo"]; ?>" class="btn_reporte btn-floating waves-effect waves-light red modal-trigger" ><i class="mdi-action-delete"></i></a>
+						</td>
+			
+						</tr>
+						<?php 	
+						}
+						?>
+					</tbody>
+                  </table>
+                </div>
+              </div>
+            </div> 
+            <br>
+     
+           
+          </div>
+          <!-- Floating Action Button -->
+            <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
+                <a class="btn-floating btn-large">
+                  <i class="mdi-action-stars"></i>
+                </a>
+                <ul>
+                  <li><a href="css-helpers.html" class="btn-floating red"><i class="large mdi-communication-live-help"></i></a></li>
+                  <li><a href="app-widget.html" class="btn-floating yellow darken-1"><i class="large mdi-device-now-widgets"></i></a></li>
+                  <li><a href="app-calendar.html" class="btn-floating green"><i class="large mdi-editor-insert-invitation"></i></a></li>
+                  <li><a href="app-email.html" class="btn-floating blue"><i class="large mdi-communication-email"></i></a></li>
+                </ul>
+            </div>
+            <!-- Floating Action Button -->
+        </div>
+        <!--end container-->
+        </section>
+	    <div class="lean-overlay" id="transparencia" style="display:none;"></div>
+    
+      <!-- END CONTENT -->
+	      <!-- jQuery Library -->
+        <script type="text/javascript" src="/js/plugins/jquery-1.11.2.min.js"></script>  
+	    <script src="/js/global.js"></script>
+	    <script src="/js/adminservice_form.js"></script>	
+	    <script type="text/javascript">
+		<?php 
+		    if($this->transacion == "add"){
+				?>
+				
+					AjaxGET_TEXT("/adminservice/form/crear", function(responseText){
+
+					parseScript(responseText);
+
+					formMsj = _SQS.id("modal1");
+					formMsj.innerHTML = responseText;
+
+					cardalert = _SQS.id("modal1");
+					cardalert.setAttribute("style","display:block;z-index:1300");
+
+					transparencia = _SQS.id("materialize-lean-overlay-1");
+					transparencia.setAttribute("style","z-index: 1002; display: block; opacity: 0.5;");
+					});
+					
+			<?php
+			}else{
+			?>
+					transparencia = _SQS.id("materialize-lean-overlay-1");
+					transparencia.setAttribute("style","z-index: 1002; display: none;");				
+		<?php		
+			}
+	    ?>	
+	
+          
+		</script
+     

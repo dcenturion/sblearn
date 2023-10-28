@@ -1,0 +1,120 @@
+
+ 
+
+	
+<nav class="navbar navbar-expand-lg navbar-light"  style="background-color:<?php echo $viewDataArray["Color"]; ?>;">
+
+			<a class="navbar-brand" href="/<?php echo $viewDataArray["Url"]; ?>" style="color:<?php echo $viewDataArray["Color_Texto_Menu"]; ?>;font-size:0.8em;">
+				<?php if(empty($viewDataArray["Img_Logo"])){ ?>
+				No hay logo
+				<?php }else{ ?>	
+
+			
+				<img src="/sadministrator/simages/<?php echo $viewDataArray["Img_Logo"]; ?>" width="20%" class="d-inline-block align-middle" alt="">
+               	PLATAFORMA EDUCATIVA					
+				<?php } ?>					
+			
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="nav navbar-nav ml-auto">
+				  <li class="nav-item">
+            <?php if($viewDataArray["Url"]=="elda") {?> 
+					     <a class="nav-link"  style="color:<?php echo $viewDataArray["Color_Texto_Menu"]; ?>;" href="http://yachai.org/nosotros/empresa/<?php echo $viewDataArray["Url"];?>">Nosotros</a>
+            <?php }else {?> <a class="nav-link" href="#" style="color:<?php echo $viewDataArray["Color_Texto_Menu"]; ?>;" data-toggle="modal" data-target="#exampleModal">Nosotros</a>   <?php }?> 
+
+				  </li>
+				  
+				  <li class="nav-item">
+				   <?php if($viewDataArray["Url"]=="elda") {?> 
+					<a class="nav-link" href="https://www.escuelaelda.com/capacitacion_certificacion" style="color:<?php echo $viewDataArray["Color_Texto_Menu"]; ?>;" >Pr&oacute;ximos Cursos</a>
+				   <?php }else {?> 
+						<a class="nav-link" href="/catalogo-productos/empresa/<?php echo $viewDataArray["Url"]; ?>" style="color:<?php echo $viewDataArray["Color_Texto_Menu"]; ?>;" >Pr&oacute;ximos Cursos</a>
+				   <?php }?> 
+				  </li>
+				  
+				  <li class="nav-item">
+				   <?php if($viewDataArray["Url"]=="esgep"  ||  $viewDataArray["Url"]=="elda") {?> 
+					<a class="nav-link" href="/certificado/empresa/<?php echo $viewDataArray["Url"];?>/interface/List/request/on/" style="color:<?php echo $viewDataArray["Color_Texto_Menu"]; ?>;" >Certificados</a>
+				   <?php }?> 
+				  </li>				  
+				  
+				</ul>
+				
+			  </div>	
+
+	
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">NOSOTROS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo $viewDataArray["Nosotros"]; ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModa2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">PROXIMOS CURSOS</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php echo $viewDataArray["Nosotros"]; ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">RECUPERAR CONTRASEÑA</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form id="Obj_Password" action="javascript:void(null);" enctype="multipart/form-data">	
+
+              <div class="form-group">
+                <label for="form-control-1">Enviar solicitud al Email</label>
+                <input type="email" name="email" class="form-control" id="form-control-1" placeholder="Email">
+              </div>
+              <button type="submit" onclick="SaveFormb(this);" direction="/recuperar-password/empresa/<?php echo $viewDataArray["Url"]; ?>/Interface/Recover_Password_Solicitud/Obj_Password/Entity/" screen="Msg_0" class="btn btn-info btn-block" id="button_RecuperarPassword" form="Obj_Password">Recuperar Contraseña</button>
+            </form>
+       <!-- <?php //echo $viewDataArray["Nosotros"]; ?> -->
+      </div>
+     <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>-->
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,19 @@
+
+/* css de carusel de navegación*/
+.iconsDefaultColor {
+	color: #636265;
+}
+.iconsNavegationColor{
+	color: #03a9f4;
+}
+/*footer*/
+.footing{
+	background-color:#636265;
+	margin-top: 5em;
+}
+pre{
+	white-space: pre-wrap;
+	margin: 10px 0 10px 0;
+	padding: 30px 1px 10px 10px;
+}
+

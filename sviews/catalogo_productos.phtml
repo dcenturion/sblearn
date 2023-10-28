@@ -1,0 +1,91 @@
+<?php
+
+			
+		$Query = "
+			SELECT 
+			AR.Id_Edu_Articulo 
+			, EA.Id_Edu_Almacen
+			, AR.Nombre
+			, AR.Url_Amigable
+			, AR.Estado
+			, AR.Imagen
+			, AR.Imagen_Presentacion				
+			, AR.Id_Edu_Tipo_Estructura
+			, AR.Date_Time_Creation
+			, EAC.Nombre AS Categoria  
+			, AR.Fecha_Publicacion
+			, AR.Link AS Link_Curso
+			FROM  edu_almacen EA 
+			INNER JOIN edu_articulo AR ON AR.Id_Edu_Articulo = EA.Id_Edu_Articulo
+			INNER JOIN edu_area_conocimiento EAC ON AR.Id_Edu_Area_Conocimiento = EAC.Id_Edu_Area_Conocimiento
+			WHERE 
+			AR.Id_Edu_Tipo_Estructura = :Id_Edu_Tipo_Estructura 
+			AND  AR.Entity = :Entity 	
+			AND  AR.Fecha_Publicacion  between '2020-10-01' and '2020-11-01'
+			ORDER BY AR.Date_Time_Creation DESC
+		";    
+		
+		$Date = DCDate();
+		$Where = [
+		 "Id_Edu_Tipo_Estructura" => 1
+		, "Entity" => $viewDataArray["Id_Entity"]
+		
+		];
+			
+		$Rows = ClassPdo::DCRows($Query,$Where,$Conection);
+		$Fields ="";
+		$Count = 0;
+		$Domain = "http://{$_SERVER["HTTP_HOST"]}";		
+		$Card = "";
+		foreach($Rows AS $Field){
+					
+					$Count += 1;	
+
+
+						$Imagen_Presentacion = $Field->Imagen;
+						$Link = $Field->Link_Curso;
+						
+						$Mes_Bd =  DCMes_Texto($Field->Fecha_Publicacion);
+						$Fecha_Publicacion = $Field->Fecha_Publicacion;
+						$numeroDia = date('d', strtotime($Field->Fecha_Publicacion));	
+						if(!empty($Link)){
+						    $Button = '<a href="'.$Link.'" class="btn btn-primary">Ver Detalles</a>';
+						}
+
+						$Card .= '
+						<div class="card" style="width: 18rem;position:relative;">
+						  <div style="position: absolute;
+							top: 10px;
+							left: 0px;
+							padding: 3px 10px;
+							color: #fff;
+							background: #5e5b5b;
+							">'.$numeroDia." ".$Mes_Bd.'</div>
+						  <img class="card-img-top" src="'.$Domain.'/sadministrator/simages/articulo/'.$Imagen_Presentacion.'" alt="Card image cap">
+						  <div class="card-body">
+							<h5 class="card-title">'.$Field->Nombre.'</h5>
+							'.$Button.'
+						  </div>
+						</div>
+
+						';
+
+		}
+		
+		$html ='<div class="container-fluid pl-5 pt-5 pr-5 pb-5" style="background-color:#f9f7f7;" >
+		
+		      ';
+			$html .= '<p class="h4">CURSOS ACTUALES</p> <br> <div style="display: flex;flex-wrap: wrap;justify-content: space-evenly;">';
+			$html .= $Card;
+		$html .='</div></div>';
+        
+
+
+
+
+/*SELECT 
+		*
+			FROM edu_articulo EA
+			WHERE   EA.Fecha_Inicio_R BETWEEN '2020-10-01' AND '2020-11-01'*/	
+		
+?>

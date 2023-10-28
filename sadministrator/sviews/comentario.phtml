@@ -1,0 +1,84 @@
+<div id="bd">
+
+		 	 <div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div id="logo">
+							<img width="50%" src="/_imagenes/usuarios/<?=$reg_datos_Servicio->ImagenLogo; ?>">
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="steps">
+							Paso 1: Red de Comunicación
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="steps">
+							Paso 2: Cuestionario
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="steps active">
+							Paso 3: Comentario
+						</div>
+					</div>
+
+				</div><!--/.row-->
+			</div><!--/.container-->
+
+
+			<div class="container">
+				<div class="box-grey-grey">
+					<div class="row">
+						<div class="col-sm-12">
+							<h2>REALIZA TU COMENTARIO</h2>
+							<div class="help-tip bb1-grey">Opcional</div>
+							<div class="form-textarea-wrapper">
+							    <form id="form_comentario" >
+								<textarea name="textarea" id="textarea" rows="10" cols="50" class="form-control"></textarea>
+								</form>
+								<div class="icon-next" id="btn_next_formB" ></div>
+							</div>
+							<div class="form-textarea-wrapper">
+								<div class="form-info text-right">300 carct. máx</div>
+							</div>
+
+						</div>
+					</div>
+				</div><!--/.row-->
+			</div><!--/.container-->
+		</div><!--/.bd-->
+	
+		<script>
+	
+			$('#btn_next_formB').on('click',function(e){
+				
+				ActivaCortina();
+				var ruta = '/system/_vistas/se_articulo_test.php?Main=guardaComentario&Servicio=<?=$Servicio; ?>&componente=<?=$componente; ?>&Usuario=<?=$Usuario; ?>';
+				
+				    $.ajax({                        
+					   type: "POST",                 
+					   url: ruta,                     
+					   data: $("#form_comentario").serialize(), 
+					   success: function(response)             
+					   {    
+					   
+					        // alertify.success(response);
+							var l_a_json = eval('(' + response + ')');
+							var mensaje = l_a_json["mensaje"];
+							var bolean = l_a_json["bolean"];
+
+							if(bolean == "TRUE"){
+								
+								
+								location.href="/finalf/servicio/<?=$Servicio; ?>/componente/<?=$componente; ?>/user/<?=$Usuario; ?>"; 
+
+							}
+							if(bolean == "FALSE"){
+								alertify.error(mensaje);						
+							}
+
+					   }
+					});	
+		    });				
+		</script>	

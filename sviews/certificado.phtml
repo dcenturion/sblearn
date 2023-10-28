@@ -1,0 +1,53 @@
+<?php
+        $Card = '
+		
+			<form class="form-inline">
+			  <div class="form-group mb-2">
+				<label for="exampleInputEmail1" style="    width: 100%;justify-content: left;">Tipo de documento</label>
+				<input type="text"  class="form-control" id="staticEmail2" value="">
+			  </div>
+			  <div class="form-group mb-2">
+				<label for="exampleInputEmail1" style="    width: 100%;justify-content: left;">Número de documento </label>
+				<input type="text"  class="form-control" id="staticEmail2" value="">
+			  </div>
+			  
+			  <div class="form-group mb-2">
+				<label for="exampleInputEmail1" style="    width: 100%;justify-content: left;">Nacionalidad </label>
+				<input type="text"  class="form-control" id="staticEmail2" value="">
+			  </div>
+			  
+			  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+			</form>					
+		';
+		
+		$menu = "Gestión de Plantilla]/sadministrator/edu-gestion-certificado]ScreenRight]Marca}";
+		$menu .= "Cursos en Vivo]/sadministrator/edu-gestion-certificado]ScreenRight}";
+		$menu .= "Cursos Grabados]/sadministrator/edu-gestion-certificado]ScreenRight}";
+		// $menu .= "Grabado - C. Digitales]/sadministrator/edu-gestion-certificado]ScreenRight}";
+		// $menu .= "Grabado - C. Físicos]/sadministrator/edu-gestion-certificado]ScreenRight}";
+		
+		$pestanas = DCTabs($menu, 'nav nav-tabs nav-tabs-custom m-b-15','Menu_One',$arg);		
+
+		$html ='<div class="container-fluid pl-5 pt-5 pr-5 pb-5" style="background-color:#f9f7f7;" > ';
+			$html .= '<h1 class="h4">BUSQUEDA DE CERTIFICADOS</h1> <br> 
+			
+				<div style="">';
+				
+				$html .= $pestanas;
+				$html .= $Card;
+				
+				$html .='
+				</div>
+			</div>';
+		
+        echo $html;
+
+
+
+
+/*SELECT 
+		*
+			FROM edu_articulo EA
+			WHERE   EA.Fecha_Inicio_R BETWEEN '2020-10-01' AND '2020-11-01'*/	
+		
+?>

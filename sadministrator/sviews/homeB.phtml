@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> 
+		
+		<?php 
+		
+		$Domain = "http://{$_SERVER["HTTP_HOST"]}";
+		
+		if(empty($Datos_Page->Imagen)){
+		   $Image = $Domain."/sadministrator/simages/rs/Img_Yachai.png";
+		   $Url = $Domain;
+		   $Title= "Yachai Contenidos - Contenidos Educativos - Vídeos Educativos";
+		   $Title_Site = "Yachai Contenidos - Contenidos Educativos - Vídeos Educativos";
+		   
+		   $Descripcion = "Somos una organización que nace con la visión de contribuir en el crecimiento integral y sostenido de las personas, buscando en todo 
+			momento, un impacto social y más humano con cada uno de los productos y servicios que compartimos gratuitamente.";
+		   $Palabras_Claves = " Cursos, Lecciones, Post, Blog, Finanzas, Logística, Cursos Gratis, Películas Gratis, Tips y Lecciones de Finanzas, 
+           Tips y Lecciones de Recursos Humanos, Tips y Lecciones de Marketing, Tips y Lecciones de Liderazgo  ";		
+		}else{
+			
+		   $Image = $Domain."/sadministrator/simages/articulo/".$Datos_Page->Imagen."";	
+		   $Url = $Domain."/sadministrator/edu-articulo-det/interface/begin/request/on/key/".$Datos_Page->Id_Edu_Almacen."/action/sugerencia";		   
+		   
+		   $Title = $Datos_Page->Nombre;		
+		   $Title_Site = $Datos_Page->Nombre;		
+		   $Title = $Datos_Page->Nombre;		
+		   $Descripcion = $Datos_Page->Descripcion;		
+		   $Palabras_Claves = $Datos_Page->Palabras_Claves;		
+		   
+		}
+		
+		$Ramdon_V = rand();
+		?>		
+
+		<title><?php echo $Title; ?></title>
+		<meta name="title" content ="<?php echo $Title_Site; ?>">
+		<meta name="author" content="<?php echo $Domain; ?>">
+		<meta name="msapplication-TileColor" content="#000"> 
+		<meta name="theme-color" content="#ffffff">
+		<meta name="googlebot" content="index, follow"> 	
+		<meta name="robots" content="index,follow">
+		<meta name="description" content="<?php echo $Descripcion; ?>">
+		<meta name="keywords" content="<?php echo $Palabras_Claves; ?>">
+        <link rel="canonical" href="<?php echo $Url; ?>">		
+		<link rel="apple-touch-icon" sizes="180x180" href="/sadministrator/simages/apple-touch-icon.png"> 
+		<link rel="icon" type="image/png" sizes="32x32" href="/sadministrator/simages/favicon-32x32.png"> 
+		<link rel="icon" type="image/png" sizes="16x16" href="/sadministrator/simages/favicon-16x16.png"> 
+
+		
+		<!-- Marcado Schema.org para Google+ -->
+		<meta itemprop="name" content="<?php echo $Title_Site; ?>">
+		<meta itemprop="description" content="<?php echo $Descripcion; ?>">
+		<meta itemprop="image" content="<?php echo $Image; ?>">
+		
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="<?php echo $Domain; ?>">
+		<meta name="twitter:title" content="<?php echo $Title_Site; ?>">
+		<meta name="twitter:description" content="<?php echo $Descripcion; ?>">
+		<meta name="twitter:creator" content="Yachai">
+		<!-- Resumen Twitter Card con una imagen grande con al menos 280x150px -->
+		<meta name="twitter:image:src" content="<?php echo $Image; ?>">
+			
+
+		<!--fb-->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="<?php echo $Url; ?>">
+		<meta property="og:title" content="<?php echo $Title_Site; ?>">
+		<meta property="og:description" content="<?php echo $Descripcion; ?>">
+		<meta property="og:image" content="<?php echo $Image; ?>">
+		<meta property="fb:pages" content="780950008768542">
+	    <meta property="fb:app_id" content="2124618677822003">
+
+		<!--tw-->
+	
+	    <link rel="alternate" hreflang="es" href="<?php echo $Domain; ?>" />
+		<!--script google-->
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<script>
+		  (adsbygoogle = window.adsbygoogle || []).push({
+			google_ad_client: "ca-pub-1986379983191131",
+			enable_page_level_ads: true
+		  });
+		</script>
+		
+		<!-- SITE TITLE -->		
+        <link rel="stylesheet" href="<?php echo $Domain; ?>/sadministrator/sstyles/jquery-ui.css" rel="stylesheet">
+							
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet">
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/sadministrator/sstyles/vendor.min.css">
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/sadministrator/sstyles/cosmos.min.css?var=<?php echo $Ramdon_V; ?>">
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/sadministrator/sstyles/application.min.css">
+		
+		<link rel="stylesheet" type="text/css" href="<?php echo $Domain; ?>/sadministrator/sstyles/alertify.bootstrap.css" media="all">
+		<link rel="stylesheet" type="text/css" href="<?php echo $Domain; ?>/sadministrator/sstyles/alertify.core.css" media="all">
+		<link rel="stylesheet" type="text/css" href="<?php echo $Domain; ?>/sadministrator/sstyles/alertify.default.css" media="all">
+		<link rel="stylesheet" type="text/css" href="<?php echo $Domain; ?>/sadministrator/sstyles/style_local.css?var=<?php echo $Ramdon_V; ?>" media="all">
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/cdatetime/css/bootstrap-material-datetimepicker.css" />
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/cdatetime/css/bootstrap-material-datetimepicker.css" />
+		
+        <link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/reproductor-video/youtube/dist/css/jquery.mb.YTPlayer.min.css" >
+        <link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/reproductor-video/edit-front.css" >
+	    <link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/slide/assets/css/main.css">	
+		<!-- Bootstrap styles -->
+		<!-- Generic page styles -->
+		<link rel="stylesheet" href="<?php echo $Domain; ?>/splugin/upload/css/style.css">
+		<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+		<link rel="stylesheet" href="/splugin/upload/css/jquery.fileupload.css">		
+
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/jquery-2.1.1.min.js"></script>		
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/vendor.min.js"></script>	
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/functions.min.js"></script>		
+
+		<script src="<?php echo $Domain; ?>/splugin/ckeditor/ckeditor.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js"></script>
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/functions.min.js"></script>					
+				
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+
+
+        <script src="<?php echo $Domain; ?>/splugin/reproductor-video/edit-front.js?var=<?php echo $Ramdon_V; ?>"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115131138-1"></script>
+		
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-115131138-1');
+		</script>		
+
+
+    </head>
+	<body class="" id="Body_Content">
+	     
+		    <div class="site-overlay"></div>
+         	
+				<?= $this->view; ?>
+				<?= $this->render(dirname(__FILE__)."/footer.phtml",$DatosUser); ?>
+
+					
+				
+			
+			
+			<script src="/sadministrator/sbookstores/js/cosmos.min.js"></script>
+			<script src="/sadministrator/sbookstores/js/application.min.js"></script>
+			<script src="/sadministrator/sbookstores/js/forms-plugins.min.js"></script>
+			<script src="/sadministrator/sbookstores/js/ui-buttons.min.js"></script>
+			<script src="/sadministrator/sbookstores/js/validate.js"></script>
+			<script src="/sadministrator/sbookstores/js/tables-datatables.min.js"></script>
+			<script src="/sbookstores/js/alertify.js"></script>
+			<script src="/sbookstores/js/alertify.min.js"></script>							
+			<script src="/sadministrator/sbookstores/js/history.js"></script>	
+			<script src="/splugin/upload/upload.js"></script>
+			<script src="/splugin/cdatetime/js/bootstrap-material-datetimepicker.js"></script>
+	
+			<script src="/splugin/slide/js/miniSlider.js"></script>
+
+
+
+
+
+	 	<!-- fancybox js -->
+    </body>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+
+</html>

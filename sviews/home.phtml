@@ -1,0 +1,199 @@
+<?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/sadministrator/sbookstores/captcha/recaptcha_keys.php');
+?>
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+    <head>
+<!-- Meta -->
+		<meta http-equiv=”Content-Type” content=”text/html; charset=UTF-8″ />
+		  <meta http-equiv="Cache-control" content="no-cache">
+		<?php 
+		
+		$Domain = "http://{$_SERVER["HTTP_HOST"]}";
+		
+		if(empty($Datos_Page->Imagen)){
+		   $Image = $Domain."/sadministrator/simages/rs/Img_Yachai.png";
+		   $Url = $Domain;
+		   $Title= "Yachai Contenidos - Contenidos Educativos - Vídeos Educativos";
+		   $Title_Site = "Yachai Contenidos - Contenidos Educativos - Vídeos Educativos";
+		   
+		   $Descripcion = "Somos una organización que nace con la visión de contribuir en el crecimiento integral y sostenido de las personas, buscando en todo 
+			momento, un impacto social y más humano con cada uno de los productos y servicios que compartimos gratuitamente.";
+		   $Palabras_Claves = " Cursos, Lecciones, Post, Blog, Finanzas, Logística, Cursos Gratis, Películas Gratis, Tips y Lecciones de Finanzas, 
+           Tips y Lecciones de Recursos Humanos, Tips y Lecciones de Marketing, Tips y Lecciones de Liderazgo  ";
+		   
+		}else{
+			
+		   $Image = $Domain."/sadministrator/simages/articulo/".$Datos_Page->Imagen."";	
+		   $Url = $Domain."/sadministrator/edu_articulo_det/Interface/begin/Request/On/Key/".$Datos_Page->Id_Edu_Almacen."/Action/Sugerencia";		   
+		   
+		   $Title = $Datos_Page->Nombre;		
+		   $Title_Site = $Datos_Page->Nombre;		
+		   $Title = $Datos_Page->Nombre;		
+		   $Descripcion = $Datos_Page->Descripcion;		
+		   $Palabras_Claves = $Datos_Page->Palabras_Claves;		
+		   
+		}
+		
+		$Ramdon_V = rand();
+		?>				
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> 
+		<title><?php echo $Title; ?></title>
+		<meta name="title" content ="<?php echo $Title_Site; ?>">
+		<meta name="author" content="<?php echo $Domain; ?>">
+		<meta name="msapplication-TileColor" content="#000"> 
+		<meta name="theme-color" content="#ffffff">
+		<meta name="googlebot" content="index, follow"> 	
+		<meta name="robots" content="index,follow">
+		<meta name="description" content="<?php echo $Descripcion; ?>">
+		<meta name="keywords" content="<?php echo $Palabras_Claves; ?>">
+		
+        <link rel="canonical" href="<?php echo $Url; ?>">		
+		<link rel="apple-touch-icon" sizes="180x180" href="/sadministrator/simages//apple-touch-icon.png"> 
+		<link rel="icon" type="image/png" sizes="32x32" href="/sadministrator/simages/favicon-32x32.png"> 
+		<link rel="icon" type="image/png" sizes="16x16" href="/sadministrator/simages/favicon-16x16.png"> 
+
+		
+
+		
+		<!-- Marcado Schema.org para Google+ -->
+		<meta itemprop="name" content="<?php echo $Title_Site; ?>">
+		<meta itemprop="description" content="<?php echo $Descripcion; ?>">
+		<meta itemprop="image" content="<?php echo $Image; ?>">
+		
+		<!-- Twitter Card data -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="<?php echo $Domain; ?>">
+		<meta name="twitter:title" content="<?php echo $Title_Site; ?>">
+		<meta name="twitter:description" content="<?php echo $Descripcion; ?>">
+		<meta name="twitter:creator" content="Yachai">
+		<!-- Resumen Twitter Card con una imagen grande con al menos 280x150px -->
+		<meta name="twitter:image:src" content="<?php echo $Image; ?>">
+			
+
+		<!--fb-->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="<?php echo $Url; ?>">
+		<meta property="og:title" content="<?php echo $Title_Site; ?>">
+		<meta property="og:description" content="<?php echo $Descripcion; ?>">
+		<meta property="og:image" content="<?php echo $Image; ?>">
+		<meta property="fb:pages" content="780950008768542">
+	    <meta property="fb:app_id" content="2124618677822003">
+
+		<!--tw-->
+	
+	    <link rel="alternate" hreflang="es" href="<?php echo $Domain; ?>" />
+	
+		<!-- Stylesheets -->
+		<!-- bootstrap v3.3.6 css -->
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">						
+
+		<!-- font-awesome css -->
+		<link href="/sstyles/font-awesome.css" rel="stylesheet">
+		<!-- flaticon css -->
+		<link href="/sstyles/flaticon.css" rel="stylesheet">
+		<!-- animate css -->
+		<link href="/sstyles/animate.css" rel="stylesheet">
+		<!-- owl.carousel css -->
+		<link href="/sstyles/owl.css" rel="stylesheet">
+		<!-- fancybox css -->
+		<link href="/sstyles/jquery.fancybox.css" rel="stylesheet">
+		<link href="/sstyles/hover.css" rel="stylesheet">
+		<link href="/sstyles/style.css" rel="stylesheet">
+		<!-- revolution slider css -->
+		<link rel="stylesheet" type="text/css" href="/sstyles/revolution/settings.css">
+		<link rel="stylesheet" type="text/css" href="/sstyles/revolution/layers.css">
+		<link rel="stylesheet" type="text/css" href="/sstyles/revolution/navigation.css">
+		
+		<link rel="stylesheet" type="text/css" href="/sstyles/alertify.bootstrap.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/sstyles/alertify.core.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/sstyles/alertify.default.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/sstyles/style_local.css?var=<?php echo $Ramdon_V; ?>" media="all">
+	
+			
+		<!-- Responsive -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<link href="/sstyles/responsive.css" rel="stylesheet">
+		<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+		<!--[if lt IE 9]><script src="/sbookstores/js/respond.js"></script><![endif]-->		
+		<!-- REVOLUTION JS FILES -->
+		<!-- jquery Liabrary -->
+		<script src="/sbookstores/js/jquery-1.12.4.min.js"></script>
+		<!-- bootstrap v3.3.6 js -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target=".site-header"><span class="icon fa fa-long-arrow-up"></span></div>
+		<script src="/sbookstores/js/jquery.fancybox.pack.js"></script>
+		<script src="/sbookstores/js/jquery.fancybox-media.js"></script>
+		<!-- owl.carousel js -->
+		<script src="/sbookstores/js/owl.js"></script>
+		<!-- counter js -->
+		<script src="/sbookstores/js/jquery.appear.js"></script>
+		<script src="/sbookstores/js/jquery.countTo.js"></script>
+		<!-- mixitup js -->
+		<script src="/sbookstores/js/mixitup.js"></script>
+		<!-- validate js -->		
+		<script src="/sbookstores/js/validate.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/7.2.0/firebase.js?var=<?php echo $Ramdon_V; ?>"></script>
+		
+		<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/jquery-2.7.slim.min.js?var=<?php echo $Ramdon_V; ?>"></script>
+		
+		<script src="/sbookstores/js/functions.js"></script>	
+
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115131138-1"></script>
+				<script src="<?php echo $Domain; ?>/sadministrator/sbookstores/js/functions.min.js"></script>
+		
+		<script>
+
+		  
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-115131138-1');
+		</script>			
+    </head>
+	<body>
+		    <div class="page-wrapper">
+
+			<!-- Preloader -->
+			<div class="preloader"></div>
+		
+				<?= $this->render("sviews/header.phtml",$viewDataArray); ?>
+				<?= $this->view; ?>
+				<?= $this->render("sviews/footer.phtml",$viewDataArray); ?>
+
+
+			<div>
+
+
+		<script type="text/javascript" src="/sbookstores/js/revolution/jquery.themepunch.tools.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/jquery.themepunch.revolution.min.js"></script>	
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.actions.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.carousel.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.kenburn.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.layeranimation.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.migration.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.navigation.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.parallax.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.slideanims.min.js"></script>
+		<script type="text/javascript" src="/sbookstores/js/revolution/extensions/revolution.extension.video.min.js"></script>
+
+		<!-- script JS  -->
+		<script src="/sbookstores/js/script.js"></script>
+		<script src="/sbookstores/js/alertify.js"></script>
+		<script src="/sbookstores/js/alertify.min.js"></script>		
+		<!-- fancybox js -->
+		<!-- Google ReCaptcha -->
+		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+		<!-- Fin Google ReCaptcha -->
+
+    </body>
+
+		
+
+	
+</html>

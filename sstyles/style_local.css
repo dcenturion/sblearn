@@ -1,0 +1,119 @@
+.Cortina{
+	position:relative;
+}
+.Cortina_Tenue{
+	position:absolute;	
+	top:0px;
+	left:0px;
+	width:700px;
+	height:700px;
+	background:#fff;
+	z-index:9999;
+}
+
+.Cortina_Tenue img{
+    position: absolute;
+    left: 42%;
+    top: 40%;
+}
+.nav-tabs-custom>li.active>a, .nav-tabs-custom>li.active>a:focus, .nav-tabs-custom>li.active>a:hover {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-bottom-color: #2b92e9;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+    cursor: default;
+}
+.nav-tabs-custom>li>a {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+}
+.nav-tabs>li>a {
+    margin-right: 5px;
+}
+.nav>li>a {
+    color: #333;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.538462;
+    border: 1px solid transparent;
+    border-radius: 2px 2px 0 0;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+.panel-default>.panel-heading {
+    background: #fafafa;
+    border: none;
+    color: #333;
+    padding: 20px 22px;
+}
+
+.panel {
+    box-shadow: none;
+}
+.panel-default {
+    border-color: #e5e5e5;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #eee;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+}
+
+.panel-title {
+    padding: 0px 0px 10px 0px;
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1.5em;
+    color: inherit;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+h1 {
+    font-size: 2em;
+    margin: .67em 0;
+}
+* {
+    outline: 0!important;
+}
+* {
+    box-sizing: border-box;
+}
+user agent stylesheet
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}

@@ -1,0 +1,172 @@
+		<!-- START  HOME DESIGN -->
+		<section class="section-top" style="margin-top:60px;">
+			<div class="overlay">
+				<div class="container">
+					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+						<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+							<h2>Bienvenido a nuestro blog</h2>
+						</div><!-- //.HERO-TEXT -->
+					</div><!--- END COL -->
+				</div><!--- END CONTAINER -->
+			</div><!--- END HOME OVERLAY -->
+		</section>	
+		<!-- END  HOME DESIGN -->	
+
+		<!-- START BLOG SINGLE -->
+		<section class="blog_post section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-12 col-xs-12">
+					
+					
+					
+						        <?php 
+									 foreach ( $this->blog_array as $result ) { 
+								?>
+								
+								<div class="single-blog single-blog-mb">
+									<div class="single-img">
+									
+									   
+									    <?php 
+									        if ( $result["Embebido"] !==""  ) { 
+											    
+												echo $result["Embebido"];
+								        ?>
+										
+										<?php 
+										    }else{
+								        ?>
+										<img src="/system/_articulos/<?= $result["Imagen"]; ?>" class="img-responsive" alt=""/>
+										
+										<?php 
+										    }
+								        ?>
+										<div class="post-date">
+											<h4><?= $result["Fecha"]; ?></h4>
+										</div>
+										<!---
+										<div class="blog-social">
+											<h4>Comparte</h4>
+											<ul>
+												<li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+												<li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+												<li><a href="#"><i class="fa fa-google-plus google"></i></a></li>
+												<li><a href="#"><i class="fa fa-linkedin linkedin"></i></a></li>
+											</ul>	
+										</div>	-->								
+									</div>	
+									<div class="single_blog_dsc">
+										<h3><?= $result["Titulo"]; ?></h3>
+										<?php 
+										if ( empty($this->idBlog) ) { 
+										?>
+											<a href="/blog/id/<?= $result["Codigo"]; ?>" target="_blank">Ver Más</a>
+										<?php 
+										}else{
+										?>
+										    <p><?= $result["Descripcion"]; ?></p>
+											
+										<?php 
+										}
+										?>
+										
+										
+									</div>
+								</div>
+								<?php 	
+									}
+								?>	
+				
+						<!---
+						
+						<div id="pagination">
+							<nav>
+							  <ul class="pagination blog_pagination">
+								<li>
+								  <a href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+								  </a>
+								</li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li>
+								  <a href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+								  </a>
+								</li>
+							  </ul>
+							</nav>
+						</div>-->						
+					</div><!--- END COL -->
+					<div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="search wow fadeInRight">
+						    <form action="/blog" method="post">
+							<div style="float:left;width:100%;background-color: #333333;">
+								<input style="float:left;width:70%;" type="text" 
+								class="form-control" name="query" placeholder="Búsqueda avanzada...">
+								<button style="float:right;width:30%;padding: 7px 0px 9px 0px;" type="submit" value="Buscar">Buscar</button>
+							</div>
+							</form>
+							<br>
+							<br>
+						</div>
+						<div class="categories wow fadeInRight">
+							<h4 class="blog_sidebar_title">Categorías</h4>
+							<ul>
+							    <?php 
+									 foreach ( $this->categoria_array as $result ) { 
+								?>
+									<li><a href="/blog/idCategoria/<?= $result["Codigo"]; ?>"><i class="fa fa-caret-right"></i> <?= $result["Descripcion"]; ?></a></li>
+									
+								<?php 
+									 }
+								?>
+								
+							</ul>
+						</div>
+						<div class="tag">
+							<h4 class="blog_sidebar_title">Palabras Claves</h4>
+							    <?php 
+									foreach ( $this->blog_arrayB as $result ) { 
+										$MatrisNOption = explode(",", $result["PalabrasClaves"]);
+										for ($i = 0; $i < count($MatrisNOption); $i++) {
+											
+											echo "<a href='/blog?query={$MatrisNOption[$i]}'>".$MatrisNOption[$i]."</a>";
+										}
+								?>
+								<?php 
+									 }
+								?>
+						
+						</div>	
+						
+						<div class="categories wow fadeInRight">
+						<br>
+						<br>
+						<br>
+						<br>
+							<h4 class="blog_sidebar_title">Cursos y Eventos</h4>
+							<ul>
+							    <?php 
+									foreach ( $this->programasFHumana as $result ) { 
+								?>
+								<li>
+								 <a href="/formacionhumana/id/<?= $result["CodigoMov"]; ?>"><?= $result["Nombre"]; ?></a>
+								
+								</li>
+								<?php 
+									 }
+								?>
+							</ul>	
+						
+						</div>							
+					</div><!--- END COL -->	
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END BLOG SINGLE -->
+		

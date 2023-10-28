@@ -1,0 +1,151 @@
+		<!-- START SERVICES -->
+		
+		<div id="service" class="BannerPrograma1v2" style="padding:40px 0px 0px 0px;border-bottom:5px solid #b18a13;" >
+			<div class="slider_overlay" >
+				<div class="col-md-8 col-md-offset-2 col-sm-12 text-center" style="width: 40%;margin-left:56%;;">
+					<div class="hero-text" style="margin-top: 75px;">
+						<h2 style="    font-size: 1.2em;text-transform: none;line-height: 28px;;">
+						    <?=$DatosBanner; ?>
+                            <div style="color: #b7a42f;padding: 13px 15px;"><?=$NombreArticulo; ?></div></h2>
+						
+						    <?=$Referencias; ?>
+							<br>
+						  <a class="btn btn-default btn-home-bg-one page-scroll" href="#contact">Inscríbete Aquí</a>
+					</div> 
+				</div>
+			</div>
+		</div>
+		
+		<style>
+		.BannerPrograma1v2 {
+			background: url(/system/_articulos/<?=$ImagenPresentacionB; ?>)no-repeat;
+			background-size: cover;
+			background-position: center;
+			height: 571px;
+			margin-top: 91px;
+		}
+
+		.col-md-8 ul li{
+			color:#000;
+			list-style: none;
+			font-size:1.2em;
+		}
+		.col-md-3 ul{
+			padding:0px 0px 0px 20px;
+			
+		}
+		.col-md-3 ul li{
+			text-align: left;
+			padding:0px 0px 0px 0px;
+		}
+		.single_feature{
+			height:280px;
+		}
+		</style>
+		<!-- END SERVICES -->
+		<!-- START SINGLE PROJECT -->
+		<section class="single_project" style="padding:10px 0px 0px 0px;">
+			<div class="container">
+				<div class="row section-padding" style="padding:0px;">
+				
+				    <div class="section-title text-center wow zoomIn" style="padding: 35px 0px 0px 0px;">
+						<h2>Presentación</h2>
+						<div style="margin: 20px auto 20px;"></div>
+					</div>
+               					
+                    <div class="col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+							<div class="counter" style="background: #f5f6f8;margin-bottom: 30px;margin-top:10px;padding: 30px;">               
+								<p style="color: #0b375c;text-align: justify;"><?=$DescripcionArticulo; ?></p>
+							</div>
+					</div>  
+
+				    <div class="section-title text-center wow zoomIn" style="padding: 35px 0px 0px 0px;">
+						<h2>Temario</h2>
+						<div style="margin: 20px auto 20px;"></div>
+					</div>
+               					
+                    <div style="margin: 0px 0px 30px 0px;" class="col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+							<?php 
+									 foreach ( $this->curricula as $result ) { 
+								?>
+								<div class="about_project_details">
+								<h4><?= $result["Sesion"]; ?></h4>
+								<p><?= $result["DescSesion"]; ?></p>
+								<p><?= $result["Temas"]; ?></p>
+					            </div>
+								<?php 	
+									}
+								?>	
+							
+					</div>  
+					
+				    <div class="section-title text-center wow zoomIn" style="padding: 35px 0px 0px 0px;">
+						<h2>EXPOSITOR</h2>
+						<div style="margin: 20px auto 20px;"></div>
+					</div>
+               					
+                    <div style="margin: 0px 0px 30px 0px;text-align: justify;" class="col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+							<?php 
+									 foreach ( $this->facultad as $result ) { 
+								?>
+								<div class="about_project_details">
+								<h4><?= $result["Nombres"]; ?></h4>
+								<p><?= $result["Descripcion"]; ?></p>
+					            </div>
+								<?php 	
+									}
+								?>	
+					</div>  					
+					
+				 <!--   <div class="section-title text-center wow zoomIn" style="padding: 35px 0px 0px 0px;">
+						<h2>Detalles</h2>
+						<div style="margin: 20px auto 20px;"></div>
+					</div>
+
+                    <div class="col-xs-12 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+							<div class="counter" style="background: #f5f6f8;margin-bottom: 30px;margin-top:10px;padding: 30px;">               
+								<p style="color: #0b375c;"><?=$Referencias; ?></p></br>
+								<a href="#contact" class="btn-light-bg">Inscríbete</a>
+							</div>
+					</div>  -->
+					
+            									
+				
+				</div>
+			
+			</div><!-- END CONTAINER  -->
+		</section>
+		<!-- END SINGLE PROJECT -->
+		
+		<!-- START FEATURE-->
+		<section id="about" class="feature section-padding" style="padding: 30px 0px 0px 0px;">
+			<div class="container-fluid">
+				<div class="row text-center">
+					
+					<div class="col-md-3 col-sm-6 col-xs-12 single_feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<i class="fa fa-money" style="background: #0b375c none repeat scroll 0 0;border: 1px solid #0b375c;"></i>
+						<h4>INVERSIÓN</h4>
+						<p><?=$Inversion; ?> </p>						
+					</div><!--- END COL -->
+					<div class="col-md-3 col-sm-6 col-xs-12 single_feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">	
+						<i class="fa fa-credit-card-alt" ></i>
+					    <h4>FORMA DE PAGO</h4>
+						<p><?=$FormaPago; ?> </p>
+					</div><!--- END COL -->
+					<div class="col-md-3 col-sm-6 col-xs-12 single_feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">		
+						<i class="fa fa-shopping-bag" style="background: #0b375c none repeat scroll 0 0;border: 1px solid #0b375c;"></i>
+						<h4>INCLUYE</h4>
+						<p><?=$Detalles; ?> </p>
+					</div><!--- END COL -->
+					<div class="col-md-3 col-sm-6 col-xs-12 single_feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+						<i class="fa fa-phone-square" ></i>
+						<h4>INFORMES</h4>
+						<p><?=$InformesInscripciones; ?> </p>
+					</div><!--- END COL -->						
+				</div><!--- END ROW -->								
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END FEATURE -->		
+		<?= $this->formContacto; ?>
+
+		

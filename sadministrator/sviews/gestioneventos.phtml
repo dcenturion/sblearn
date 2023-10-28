@@ -1,0 +1,77 @@
+
+		
+		<!-- START  HOME DESIGN -->
+		<section class="section-top">
+			<div class="overlay">
+				<div class="container">
+					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center" style="padding:40px 0px 0px 0px;">
+						<div class="section-top-title wow fadeInRight" 
+						     data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0" >
+							<h2>Gestión de eventos</h2>
+							</br>
+							<a href="#contact" class="btn-light-bg">Inscripción en línea</a>
+						</div><!-- //.HERO-TEXT -->
+					</div><!--- END COL -->
+				</div><!--- END CONTAINER -->
+			</div><!--- END HOME OVERLAY -->
+		</section>	
+		<!-- END  HOME DESIGN -->	
+
+		<!-- START SINGLE PROJECT -->
+		<section class="single_project">
+			<div class="container">
+				<div class="row section-padding">
+					<div class="section-title text-center">
+						<h2>Eventos <span><?=$FamiliaDesc; ?></span></h2>
+						<div></div>
+					</div>
+					<div class="col-md-4">
+						<div class="project_details">
+							<div class="about_project">
+								<h4><?=$NombreArticulo; ?></h4>
+								<p><?=$DescripcionArticulo; ?>
+								
+                                </p>
+							</div>
+							<div class="about_project_details">
+								<h4>Referencias</h4>
+								<ul>
+									<li><i class="fa fa-folder"></i><b>Categoría: </b><a href="#">Eventos</a></li>
+								</ul>
+							</div>
+							<a href="#contact" class="btn-light-bg">Inscríbete</a>
+						</div>
+					</div><!--- END COL -->
+					<div class="col-md-8">
+						<div class="project_dec">
+							<img alt="" class="img-responsive" src="<?=$img; ?>">
+						 </div>
+					</div><!--- END COL -->					
+				</div>
+				<div class="row project_pb" >
+					<ul class="grid portfolio_project">
+						<?php 
+							 foreach ( $this->productos_familia as $result ) { 
+						?>
+						<li class="mix develop video">
+							<figure>
+								<div><img src="/system/_articulos/<?= $result["ImagenPresentacionA"]; ?>" alt=""></div>
+								<figcaption>
+									<h4><?= $result["Nombre"]; ?></h4>
+									<a href="/gestioneventos/id/<?= $result["CodigoMov"]; ?>" >Detalles</a>
+								</figcaption>
+							</figure>
+						</li>
+						
+						<?php 	
+							}
+						?>
+						
+					</ul>
+				</div><!-- END ROW  -->
+			</div><!-- END CONTAINER  -->
+		</section>
+		<!-- END SINGLE PROJECT -->
+		<?= $this->formContacto; ?>
+
+		

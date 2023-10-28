@@ -1,0 +1,106 @@
+		<!-- START  HOME DESIGN -->
+		<section class="section-top" style="margin-top:60px;">
+			<div class="overlay">
+				<div class="container">
+					<div class="col-md-10 col-md-offset-1 col-xs-12 text-center">
+						<div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+							<h2>Bienvenido a nuestro blog</h2>
+						</div><!-- //.HERO-TEXT -->
+					</div><!--- END COL -->
+				</div><!--- END CONTAINER -->
+			</div><!--- END HOME OVERLAY -->
+		</section>	
+		<!-- END  HOME DESIGN -->	
+
+		<!-- START BLOG SINGLE -->
+		<section class="blog_post section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-sm-12 col-xs-12">
+					
+					
+					
+						        <?php 
+									 foreach ( $this->blog_array as $result ) { 
+								?>
+								
+								<div class="single-blog single-blog-mb">
+									<div class="single-img">
+									
+									   
+									    <?php 
+									        if ( $result["Embebido"] !==""  ) { 
+											    
+												echo $result["Embebido"];
+								        ?>
+										
+										<?php 
+										    }else{
+								        ?>
+										<img src="/system/_articulos/<?= $result["Imagen"]; ?>" class="img-responsive" alt=""/>
+										
+										<?php 
+										    }
+								        ?>
+										<div class="post-date">
+											<h4><?= $result["Fecha"]; ?></h4>
+										</div>
+										<div class="blog-social">
+											<h4>Comparte</h4>
+											<ul>
+												<li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+												<li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+												<li><a href="#"><i class="fa fa-google-plus google"></i></a></li>
+												<li><a href="#"><i class="fa fa-linkedin linkedin"></i></a></li>
+											</ul>	
+										</div>									
+									</div>	
+									<div class="single_blog_dsc">
+										<h3><?= $result["Titulo"]; ?></h3>
+										<p><?= $result["Descripcion"]; ?></p>
+									</div>
+								</div>
+								<?php 	
+									}
+								?>	
+									
+					</div><!--- END COL -->
+					<div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="search wow fadeInRight">
+							<input type="text" class="form-control" placeholder="Enter Keyword Here &amp; Search...">
+						</div>
+						<div class="categories wow fadeInRight">
+							<h4 class="blog_sidebar_title">Categorías</h4>
+							<ul>
+							    <?php 
+									 foreach ( $this->categoria_array as $result ) { 
+
+								?>
+									<li><a href="#"><i class="fa fa-caret-right"></i> <?= $result["Descripcion"]; ?></a></li>
+								<?php 
+									 }
+								?>
+								
+							</ul>
+						</div>					
+						<div class="video_post wow fadeInRight">
+							<h4 class="blog_sidebar_title">Acerca de este Blog</h4>
+							<iframe src="https://player.vimeo.com/video/36667468"></iframe>								
+						</div>
+						<div class="tag">
+							<h4 class="blog_sidebar_title">Tag cloud</h4>
+							<a href="#">Design</a>
+							<a href="#">Development</a>
+							<a href="#">Photopgraphy</a>
+							<a href="#">How to build</a>
+							<a href="#">All project</a>
+							<a href="#">Seo</a>
+							<a href="#">Responsive</a>
+							<a href="#">Clean Design</a>
+						</div>					
+					</div><!--- END COL -->	
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END BLOG SINGLE -->
+		

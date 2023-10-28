@@ -1,0 +1,352 @@
+	<style>
+	<?php if(empty($viewDataArray->Color_Texto)){; ?>	
+	
+		.navbar-default .navbar-nav>li>a {
+			color: #333;
+		}
+		
+        .navbar-collapsible .navbar-toggler.right-sidebar-toggle {
+			color: #333;			
+		}
+        .pull-right{
+			color:#333;	
+		}
+        .pull-left{
+			color:#333;	
+		}
+	<?php }else{; ?>
+		.navbar-default .navbar-nav>li>a {
+			color: <?php echo $viewDataArray->Color_Texto; ?>;
+		}
+
+        .navbar-collapsible .navbar-toggler.right-sidebar-toggle {
+			color: <?php echo $viewDataArray->Color_Texto; ?>;			
+		}	
+        .pull-right{
+			color: <?php echo $viewDataArray->Color_Texto; ?>;	
+		}	
+        .pull-left{
+			color: <?php echo $viewDataArray->Color_Texto; ?>;	
+		}		
+	<?php } ?>		
+	</style>
+	
+    <div class="site-header">
+	
+		<?php if(empty($viewDataArray->Color_Menu_Horizontal)){; ?>
+		
+        <nav class="navbar navbar-default" style="background-color:#fff">
+		
+		<?php }else{; ?>
+		
+        <nav class="navbar navbar-default" style="background-color:<?php echo $viewDataArray->Color_Menu_Horizontal; ?>">
+		
+		<?php } ?>	
+
+  
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/sadministrator/edu-tendencia/request/on" style="padding: 7px 0px 0px 0px;color: #000;font-weight: bold;font-size: 2em;">
+            <?php if(empty($viewDataArray->Logo_Interno)){; ?>
+			
+			No hay logo
+			
+            <?php }else{; ?>
+			
+			<img src="/sadministrator/simages/<?php echo $viewDataArray->Logo_Interno; ?>" alt=""  width="100%" > 
+			
+			<?php } ?>
+          </a>
+          <button class="navbar-toggler left-sidebar-toggle pull-left visible-xs" type="button">
+			    <i class="zmdi zmdi-menu zmdi-hc-fw"></i>
+          </button>
+
+         <!-- <button class="navbar-toggler right-sidebar-toggle pull-right visible-xs-block" type="button">
+            <i class="zmdi zmdi-long-arrow-left"></i>
+            <div class="dot bg-danger"></div>
+          </button>-->
+					  
+          <button class="navbar-toggler pull-right visible-xs-block" type="button" data-toggle="collapse" data-target="#navbar">
+            <i class="zmdi zmdi-more-vert zmdi-hc-fw"></i>
+          </button>
+		  
+        </div>
+		
+        <div class="navbar-collapsible">
+          <div id="navbar" class="navbar-collapse collapse">
+		  
+            <button class="navbar-toggler left-sidebar-collapse pull-left hidden-xs" type="button">
+			    <i class="zmdi zmdi-menu zmdi-hc-fw"></i>
+            </button>
+			<?php 
+			   if(!empty($_SESSION['User'])){
+			?>	
+            <button class="navbar-toggler right-sidebar-toggle pull-right hidden-xs" type="button">
+              <i class="zmdi zmdi-long-arrow-left"></i>
+              <div class="dot bg-danger"></div>
+            </button>
+			<?php 
+			   }else{
+			?>	
+			
+				<a 
+					style="font-size: 1em;width:20%;text-align: center;;"
+					class="navbar-toggler right-sidebar-toggle pull-right hidden-xs" 
+					onclick="LoadPage(this);"
+					role='row'
+					direction="/sadministrator/edu-register" 
+					screen='ScreenRight'
+					id='form_Btn_is_H_b2'
+					type_send=''
+
+				>
+				  <i class="zmdi zmdi-format-align-center zmdi-hc-fw"></i> Regístrate
+				</a>
+		
+							
+				<a 
+					style="font-size: 1em;width: 20%;text-align: center;background: #2b92e9;color: #fff;"
+					class="navbar-toggler right-sidebar-toggle pull-right hidden-xs" 
+					onclick=LoadPage(this); 
+					role='row'
+					direction='/sadministrator/login'
+					screen='ScreenRight'
+					id='form_Btn_is_H_2'
+					type_send=''
+				 
+				 >
+				  <i class="zmdi zmdi-key zmdi-hc-fw"></i> Iniciar Sesión
+				</a>			
+			
+			<?php 
+			   }
+			?>				
+			
+            <ul class="nav navbar-nav">
+              <li class="visible-xs-block">
+                <div class="nav-avatar">
+                  <img class="img-circle" src="/sadministrator/simages/avatars/avatar-eco.png" alt="" width="48" height="48">
+                </div>
+                <h4 class="navbar-text text-center">Bienvenido <?php echo $viewDataArray->Nombre; ?>!</h4>
+              </li>
+            </ul>
+			  
+			<form class="navbar-form navbar-left">
+              <div class="navbar-search-group">
+                <input type="text" class="form-control" id="searchInput" name="searchInput" onkeyup="Search()"  placeholder="Buscar" >
+                <button type="submit" class="btn btn-default">
+                  <i class="zmdi zmdi-search"></i>
+                </button>
+				<div id="screen_result_search" class="screen_result_search" onclick="hideSSearch('screenSearch');" style="display:none;"> 
+					<div id="screenSearch" class="screenSearch" style="display:none;"></div>
+				</div>
+              </div>
+            </form>
+			
+            <ul class="nav navbar-nav">			
+              <li class="visible-xs-block">
+				<?php 
+				   if(empty($_SESSION['User'])){
+				?>				  
+					<a 
+						style="font-size: 1em;width:45%;text-align: center;background: #0681e2;color: #fff;padding-top: 13px;float: left;"
+						class="navbar-toggler right-sidebar-toggle visible-xs-block" 
+						onclick="LoadPage(this);"
+						role='row'
+						direction='/sadministrator/login'
+						screen='Body_Content'
+						id='form_Btn_is_H_2'
+						type_send=''
+						data-toggle="collapse"
+						data-target="#navbar"
+					 
+					 >
+					  <i class="zmdi zmdi-key zmdi-hc-fw"></i> Iniciar Sesión
+					</a>	
+					<a 
+						style="font-size: 1em;width:45%;text-align: center;padding-top: 13px;float: left;"
+						class="navbar-toggler right-sidebar-toggle" 
+						onclick="LoadPage(this);"
+						role='row'
+						direction="/sadministrator/edu_register/Entity/<?php echo $viewDataArray->Url; ?>" 
+						screen='animatedModal5'
+						id='form_Btn_is_H_b2'
+						type_send=''
+						data-toggle="collapse"
+						data-target="#navbar"
+					>
+					  <i class="zmdi zmdi-format-align-center zmdi-hc-fw"></i> Regístrate
+					</a>
+			<?php 
+			   }else{
+			?>	
+			
+               
+				  
+					<a 
+						style="font-size: 1em;width:45%;text-align: center;background: #0681e2;color: #fff;padding-top: 13px;float: left;"
+						class="navbar-toggler right-sidebar-toggle visible-xs-block" 
+						onclick="LoadPage(this);"
+						role='row'
+						direction='/sadministrator/profile_user'
+						screen='ScreenRight'
+						id='form_Btn_is_H_2'
+						type_send=''
+						data-toggle="collapse"
+						data-target="#navbar"
+					 
+					 >
+					  <i class="zmdi zmdi-account-o m-r-10"></i> Mi Perfil
+					</a>	
+					<a type="button" 
+					    data-toggle="collapse"
+						data-target="#navbar"
+						style="font-size: 1em;width:45%;text-align: center;padding-top: 13px;float: left;"
+						class="navbar-toggler right-sidebar-toggle" 
+						onclick="LoadPage(this);"
+						role='row'
+						direction="/sadministrator/logout" 
+						screen='Body_Content'
+						id='form_Btn_is_H_b2'
+						type_send=''
+					
+					style="margin-top: 7px;">
+					  <i class="zmdi zmdi-power m-r-10"></i> Cerrar Sesión
+					</a>			
+			<?php 
+			   }
+			?>						
+                </li>				
+			  
+            </ul>
+			
+       
+			
+			
+            <ul class="nav navbar-nav navbar-right">
+			
+             
+              <li class="nav-table dropdown">
+			  
+			     <?php 
+				   if(!empty($_SESSION['User'])){
+				 ?>			  
+               <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="nav-cell nav-icon">
+                    <i class="zmdi zmdi-email-open"></i>
+                  </span>
+                  <span class="hidden-md-up m-l-15">Messages</span>
+                  <span class="label label-warning">7</span>
+                </a>-->
+			  
+			     <?php 
+				   }
+				 ?>						
+                <div class="dropdown-menu custom-dropdown dropdown-messages dropdown-menu-right">
+                  <div class="dropdown-header">
+                    <span>Recent messages</span>
+                    <a href="#" class="text-primary">New Message</a>
+                  </div>
+                  <div class="m-items">
+                    <div class="custom-scrollbar">
+                      <div class="m-item">
+                        <a href="#">
+                          <div class="mi-icon bg-warning">
+                            <i class="zmdi zmdi-upload"></i>
+                          </div>
+                          <div class="mi-time">10 min</div>
+                          <div class="mi-title">Upload status</div>
+                          <div class="mi-text text-truncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        </a>
+                      </div>
+                      <div class="m-item">
+                        <a href="#">
+                          <div class="mi-icon bg-success">
+                            <i class="zmdi zmdi-money"></i>
+                          </div>
+                          <div class="mi-time">40 min</div>
+                          <div class="mi-title">Income</div>
+                          <div class="mi-text text-truncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        </a>
+                      </div>
+                      <div class="m-item">
+                        <a href="#">
+                          <div class="mi-icon bg-primary">
+                            <i class="zmdi zmdi-alert-triangle"></i>
+                          </div>
+                          <div class="mi-time">3 hours</div>
+                          <div class="mi-title">New task</div>
+                          <div class="mi-text text-truncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        </a>
+                      </div>
+                      <div class="m-item">
+                        <a href="#">
+                          <div class="mi-icon bg-warning">
+                            <i class="zmdi zmdi-upload"></i>
+                          </div>
+                          <div class="mi-time">10 min</div>
+                          <div class="mi-title">Upload status</div>
+                          <div class="mi-text text-truncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        </a>
+                      </div>
+                      <div class="m-item">
+                        <a href="#">
+                          <div class="mi-icon bg-success">
+                            <i class="zmdi zmdi-money"></i>
+                          </div>
+                          <div class="mi-time">40 min</div>
+                          <div class="mi-title">Income</div>
+                          <div class="mi-text text-truncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        </a>
+                      </div>
+                      <div class="m-item">
+                        <a href="#">
+                          <div class="mi-icon bg-primary">
+                            <i class="zmdi zmdi-alert-triangle"></i>
+                          </div>
+                          <div class="mi-time">3 hours</div>
+                          <div class="mi-title">New task</div>
+                          <div class="mi-text text-truncate">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dropdown-footer">
+                    <a href="#">View all messages</a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-table dropdown hidden-sm-down">
+			  	<?php 
+				   // var_dump($_SESSION['User']);
+				   if(!empty($_SESSION['User'])){
+				?>		
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="nav-cell p-r-10">
+                    <img class="img-circle" src="/sadministrator/simages/avatars/avatar-eco.png" alt="" width="32" height="32">
+                  </span>
+                  <span class="nav-cell"><?php echo $viewDataArray->Nombre; ?>
+                    <span class="caret"></span>
+                  </span>
+                </a>
+			  	<?php 
+				   }
+				?>					
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/sadministrator/profile_user/Request/On">
+                      <i class="zmdi zmdi-account-o m-r-10"></i> Perfil</a>
+                  </li>
+              
+                  <li role="separator" class="divider"></li>
+                  <li>
+                    <a href="/sadministrator/logout">
+                      <i class="zmdi zmdi-power m-r-10"></i> Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+   

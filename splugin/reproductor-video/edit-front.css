@@ -1,0 +1,151 @@
+.Html_Objecto_Video{
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 99%;
+	height:100%;
+}
+.Html_Objecto_Video .Html_Objecto_Video_Contenedor{
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 100%;
+	height: 100%;
+}
+.Html_Objecto_Video .Html_Objecto_Video_Contenedor iframe{
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 100%;
+	height: 100%;
+}
+.Html_Objecto_Video .Html_Objecto_Video_Background{
+	position: absolute;
+	left: 0em;
+	top: 0em;
+	width: 100%;
+	z-index: 9;
+	height:100%;
+}
+
+.Html_Objecto_Video .Html_Objecto_Video_Controladores{
+    color: #ffffff85;
+	position: absolute;
+	left: 0em;
+    z-index:20;
+	bottom: 0em;
+	width: 100%;
+	background-color:#323233;
+}
+.Html_Objecto_Video_Controladores_Botones{
+	
+}
+.Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn_Resolucion {
+	box-sizing: border-box;
+	padding: 0.3em 0.8em;
+	border: none;
+	vertical-align: middle;
+	cursor: pointer;
+	font-size: inherit;
+	display: inline-block;
+}
+
+
+.Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn {
+	box-sizing: border-box;
+	padding: 0.3em 0.8em;
+	border: none;
+	vertical-align: middle;
+	cursor: pointer;
+	font-size: inherit;
+	display: inline-block;
+	color:#fff;
+}
+
+
+.Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn .Volumen_Nivl{
+	width: 10em;
+	display: inline-block;
+	margin-left: 1em;
+	font-size: 0.7em;
+}
+.Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn:hover,
+.Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn.is-active {
+	color: #fff;
+}
+
+.Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn.is-active:hover{
+	color: #555;
+}
+.Volumen_Nivl select{
+    font-family: arial;
+    color: #3f4142;
+    font-size: 1em;
+    border: none;
+    padding: 3px 4px;
+	background: #9a9a9b;
+}
+.Volumen_Nivl select option{
+    font-family: arial;
+    color: #3f4142;
+    border: none;
+}
+.ui-widget.ui-widget-content{
+    border: none;
+    background: #038ef4;
+    height:6px;	
+	left:0px;
+	width:100%;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active{
+    border: none;
+    background: #66b5ef;
+    font-weight: normal;
+    color: #454545;
+    height:14px;
+    width: 14px;
+}
+
+.start-video {
+    position: absolute;
+    top: 37%;
+    padding: 12px;
+    left: 40%;
+    opacity: .3;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.start-video:hover
+{
+    opacity: 1;
+    -webkit-filter: brightness (1);
+}
+
+@media (max-width:767px){
+	.Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn:nth-child(2){
+	   display:none;
+	} 
+	.Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn{
+		padding: 0.5em 0.8em 0.5em 0.8em;
+		vertical-align: none;
+		margin: 0.5em 0px 0.5em 0px;
+	}
+	.Html_Objecto_Video{
+		width: 100%;
+	}
+	.ui-widget.ui-widget-content {
+		border: none;
+		height: 6px;
+		left: 0px;
+		width:100%;
+	}	
+    .Html_Objecto_Video_Controladores_Botones .Html_Objecto_Video_Controladores_Btn_Resolucion{
+		
+        vertical-align: none; 
+	}
+	.Volumen_Nivl select{
+		padding: 0px 4px;
+		background: #9a9a9b;
+	}
+}	 

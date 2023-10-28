@@ -1,0 +1,132 @@
+
+        <!--Main Slider-->
+	<?php
+	require_once($_SERVER['DOCUMENT_ROOT'].'/sadministrator/sbookstores/captcha/recaptcha_keys.php');
+	?>
+    <section class="rev_slider_wrapper" style="position:relative;">
+	
+        <div id="slider1" class="rev_slider" data-version="5.0">
+                <ul>
+					<?php
+						$Query = " 
+
+							SELECT PB.Id_Edu_Banner, PB.Frase, PB.Estado ,PB.Link_Destino 
+							, PB.Imagen
+							, PB.Entity
+							FROM edu_banner PB
+							WHERE 
+							PB.Estado = :Estado 
+							AND PB.Entity = :Entity
+
+						"; 
+						$Where = ["Estado"=>"Activo", "Entity"=> $viewDataArray["Id_Entity"] ];
+						// var_dump($Where);
+						$html = "";
+						$cont = 0;
+						$Registro = ClassPdo::DCRows($Query,$Where,$Conection);
+
+						foreach ($Registro as $Reg) {    
+					?>
+                    <!-- SLIDE  -->
+                    <li data-index='rs-<?=$Reg->Id_Edu_Banner; ?>' data-transition='curtain-<?=$Reg->Id_Edu_Banner; ?>' 
+					    data-slotamount='default' data-easein='default' 
+					    data-easeout='default' data-masterspeed='default' 
+					    data-thumb='../../assets//simages/photography9-280x43.jpg' data-rotate='0' data-title='Fade' 
+						data-description=''>
+						
+                        <img src="/sadministrator/simages/articulo/<?=$Reg->Imagen; ?>"  alt="" 
+						data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+						
+                        <div class="tp-caption NotGeneric-Title   tp-resizeme" id="slide-398-layer-1" 
+						data-x="left" data-hoffset="" data-y="center" data-voffset="-50" 
+						data-width="['auto','auto','auto','auto']" data-height="['auto','auto','auto','auto']"
+						data-transform_idle="o:1;" 
+						data-transform_in="x:[-175%];y:0px;z:0;rX:0;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0.01;s:3000;e:Power3.easeOut;" 
+						data-transform_out="s:1000;e:Power3.easeInOut;s:1000;e:Power3.easeInOut;" 
+						data-mask_in="x:[100%];y:0;s:inherit;e:inherit;" data-start="1000" 
+						data-splitin="none" data-splitout="none" data-responsive_offset="on" 
+						style="z-index: 5; white-space: normal; font-size: 16px; line-height: 24px;margin-bottom:20px;font-weight:normal;">
+                            <div class="smooth-textbox">
+                                <?=$Reg->Frase; ?>
+                            </div>
+                        </div>
+                    </li>
+					
+					<?php
+						}   
+					?>					
+                </ul>
+            </div>
+				
+			<div class="panel-form-l">
+				<div class="slidebtns">
+					
+				   <div class="authentication-content m-b-30">
+				   
+						   <h3 class="m-t-0 m-b-30 text-center">Inserta tu usuario y contrase&ntilde;a</h3>
+							<form id="login" action="javascript:void(null);"  enctype="multipart/form-data" >	
+							  <div class="form-group">
+								<input type="email" name="email" class="form-control" id="form-control-1" placeholder="Email" >
+							  </div>
+							  <div class="form-group">
+								<input type="password" name="password" class="form-control" id="form-control-2" placeholder="Contrase&ntilde;a">
+							  </div>
+							  
+							  <div class="g-recaptcha form-group" data-sitekey="6Ldjy0cdAAAAAL3VZjTUgeeUfPMZyHVbZrW9JR0V"></div>
+							 
+							 <!--<div class="form-group">
+								<a href="javascript:void(null);" type_send="" onclick="LoadPage(this);" 
+								direction="/sadministrator/login/Interface/Recover_Password" 
+								screen="ScreenRight" class="text-info pull-right" 
+								id="form_Rp_1" 
+								style="margin-top: 7px;margin-right:7px;">
+								  Recuperar Contraseña
+								</a>
+							  </div>-->
+							  
+							  <div class="form-group">
+							 <!-- <li class="nav-item">-->
+							  <!--  <a class="nav-link" href="#" style="background-color: transparent !important;color:<?php echo $viewDataArray["Color_Texto_Menu"]; ?>;" data-toggle="modal" data-target="#exampleModal3">Recuperar Contrase&ntilde;a</a>-->
+				  			 <!--  </li>-->
+							  <input type="hidden" name="google-response-token" id="google-response-token">
+							  <button type="submit" onclick="SaveFormCaptcha(this);" direction="/home/login/on/entidad/<?php echo $viewDataArray["Url"]; ?>" screen="Msg_0"  class=""  id="login_button" form="login"  style="background-color:<?php echo $viewDataArray["Color_Fondo_Boton"]; ?>;color:<?php echo $viewDataArray["Color_Texto_Boton"]; ?>">INICIAR SESIÃ“N</button>
+							  </div>	
+						   </form>
+				  </div>
+				  
+				  <div id="Msg_0">
+				  
+				  </div>								
+										
+				</div>
+
+			</div>
+						
+        </section>
+        <!--Main Slider  end-->
+
+		<style>
+		#Clientes img{
+			transform-style: preserve-3d;
+			width: 143px;
+			margin: 59px 0px 0px 0px;			
+		}
+		</style>
+		
+			<?php
+
+			if($viewDataArray["Id_Entity"]==8 ){
+			?>
+			<style>
+			.rev_slider .slotholder:after{
+			background:none;		
+			}
+			</style>
+			<?php			
+			}
+			?>
+
+		<script src="/sadministrator/sbookstores/js/functions.min.js"></script>
+		<script src="/sadministrator/sbookstores/js/recaptcha.js"></script>
+		<script src="/sbookstores/js/home.js"></script>
+

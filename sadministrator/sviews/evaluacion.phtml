@@ -1,0 +1,337 @@
+	<div id="bd">
+		 	 <div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div id="logo">
+						    <?php if(empty($reg_datos_Servicio->ImagenLogo)){?>
+							 <p>No hay logo</p>
+							 <?php  }else{ ?>
+							 <img width="50%" src="/_imagenes/usuarios/<?=$reg_datos_Servicio->ImagenLogo; ?>">							 
+							 <?php }?>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="steps"   id='btn_red'>
+							Paso 1: Red de Comunicación
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="steps active">
+						    
+							Paso 2: Cuestionario
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="steps">
+							Paso 3: Comentario
+						</div>
+					</div>
+
+				</div><!--/.row-->
+			</div><!--/.container-->
+
+            
+			<div class="container" id="container_msj"  >
+			</div>
+			
+			<div class="container">
+				<div class="box-grey-grey box-test">
+					<div class="row">
+						<div class="icon-prev" id="btn_prev_form" ></div>
+						<div class="icon-next" id="btn_next_form" ></div>
+
+								<div class="col-sm-12">
+
+									<h2>RESPONDE EL CUESTIONARIO | <span>(<?=$NroParticipantes; ?>) Personas en tu Red</span></h2>
+
+									<div class="help-tip"> <?=$datosPregunta->Nombre; ?></div>
+
+
+									<div class="list-associate" >
+								
+										
+										<form id="formTest" class="formTest" >
+										
+										<div id="table-scroll">
+											<div id="fixedY">
+												<table id="table-associate2">
+													<thead>
+														<tr>
+
+														<th rowspan="2" width="12.5%">
+															<div>
+																Colegas
+															</div>
+														</th>
+															
+														<?php
+														foreach ($PreguntaConRespuestas as $key => $regB) {
+														?>
+															<th width="10%">
+																<div><?= $regB->Nota; ?></div>
+															</th>	
+														<?php
+														}
+														?>	
+														</tr>
+														
+														<tr>							
+														<?php
+														foreach ($PreguntaConRespuestas as $key => $regB) {
+														?>
+															<th width="10%">
+																<div><?= $regB->Respuesta; ?></div>
+															</th>	
+														<?php
+														}
+														?>	
+														</tr>
+													
+													</thead>
+												</table>
+											</div>
+
+										    <div id="cuerpoDatos">
+												<div id="fixedX">
+													<table id="table-associate2">										
+														<tbody>
+															<?php
+															$cont = 0;
+															$contR = 0;
+															foreach ($ParticipantesEncuesta as $key => $reg) {
+																$cont += 1;
+																$G_Componente = $RespuestaGenerada[$contR]->G_Componente;
+																$Usuario_Contacto = $RespuestaGenerada[$contR]->Usuario_Contacto;
+																$G_Evaluacion_Respuesta = $RespuestaGenerada[$contR]->G_Evaluacion_Respuesta;
+															
+																$contR += 1;
+															?>
+															<tr>
+																	
+																	<td width="15%" style="height: 70px;">
+																		<div id="<?= $cont; ?>" class="item" >
+																			<div class="photo"><img src="/_imagenes/icon-user2.png" class="mCS_img_loaded"></div>
+																			<div class="info">
+																				<div><?= $reg->Nombre."  ".$reg->Descripcion; ?></div>
+																				<div><?= $reg->Area; ?></div>
+																			</div>
+																		</div>
+																	</td>										
+																
+															</tr>			
+															<?php
+															}
+															?>
+														
+														<tbody>	
+													</table>
+												</div>
+												
+												<div id="nofixedX">
+													<table id="table-associate2">										
+														<tbody>
+															<?php
+															$cont = 0;
+															$contR = 0;
+															foreach ($ParticipantesEncuesta as $key => $reg) {
+																$cont += 1;
+																$G_Componente = $RespuestaGenerada[$contR]->G_Componente;
+																$Usuario_Contacto = $RespuestaGenerada[$contR]->Usuario_Contacto;
+																$G_Evaluacion_Respuesta = $RespuestaGenerada[$contR]->G_Evaluacion_Respuesta;
+															
+																$contR += 1;
+															?>
+															<tr>
+																	<?php
+																	foreach ($PreguntaConRespuestas as $key => $regB) {
+																		
+																		if($Usuario_Contacto == $reg->CodigoUsuario && $G_Evaluacion_Respuesta == $regB->Codigo_Rpta){
+																			$checked = "checked";
+																		}
+																	?>
+																		<td width="10%"  style="height: 70px;">
+																			<div class="item">
+																				<label class="form-type-radio">
+																					<input type="radio" value="<?= $reg->CodigoUsuario."-".$regB->Codigo_Prgta."-".$regB->Codigo_Rpta; ?>" name="radio<?= $cont; ?>" class="associate-add" <?= $checked; ?>>
+																					<span></span>
+																				</label>
+																			</div>
+																		</td>		
+																	<?php
+																		 $checked = "";
+																	
+																	}
+																	?>											
+																
+															</tr>			
+															<?php
+															}
+															?>
+														
+														<tbody>	
+													</table>
+												</div>												
+												
+											</div>
+										
+										</form>
+								    </div>
+									
+									<div class="Fondo-Scroll">
+										    <div class="Fondo-Scroll-Bar">
+											
+										    </div>
+									</div>
+							</div>
+						</div>
+					</div><!--/.row-->
+				</div><!--/.container-->
+		</div><!--/.bd-->
+		
+		<style type="text/css">
+
+
+			#table-scroll::-webkit-scrollbar{
+				width: 12px;
+				background-color: rgba(237, 241, 246, 0.49);
+				border: 1px solid rgba(162, 163, 164, 0.49);
+				padding: 10px 0px 0px 0px;
+			}
+
+			#table-scroll::-webkit-scrollbar-thumb{
+				background-color: #d3d8df;
+				border-radius: 1em;
+				border: solid 1px #d3d8df;
+			}
+
+			table, td, th {
+			}
+
+
+			#fixedY{
+				position: relative;
+				top: 0;
+				z-index: 99;
+				width: 900px;
+			}
+
+
+			#fixedY table{
+				border-collapse: collapse;
+				width: 900px;
+			}
+
+
+			#fixedY table th {
+				font: bold 15px Tahoma, Geneva, sans-serif;
+				color: rgb(255, 255, 255);
+			}
+
+
+			#cuerpoDatos {
+			    width: 900px;
+			}
+
+			#cuerpoDatos > div{
+			float: left;
+			}
+
+
+			#cuerpoDatos > div#fixedX{
+				width: 20%;
+				position: relative;
+				left: 0;
+				z-index: 98;
+			}
+
+			#cuerpoDatos > div#fixedX table{
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+
+			#cuerpoDatos > div#nofixedX{
+			    width: 80%;
+			}
+
+			#cuerpoDatos > div#nofixedX table{
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			#cuerpoDatos > div#nofixedX table td {
+	
+			}
+		</style>
+		<script type="text/javascript">
+		function fnc() {
+		document.getElementById('table-scroll').onscroll = function() {
+
+		document.getElementById('fixedY').style.top = document.getElementById('table-scroll').scrollTop + 'px';
+		document.getElementById('fixedX').style.left = document.getElementById('table-scroll').scrollLeft + 'px';
+
+		};
+		}
+
+		window.onload = fnc;
+		</script>		
+		<script>
+		    // ActivaCortina();
+		    $(".list-associate").attr({"style":"width:100%;height:100% !important;"});
+			
+			$('#btn_next_form').on('click',function(e){
+				ActivaCortina();
+				var ruta = '/system/_vistas/se_articulo_test.php?Main=siguientePregunta&Servicio=<?=$Servicio; ?>&componente=<?=$componente; ?>&Usuario=<?=$Usuario; ?>&Pregunta=<?=$Pregunta; ?>';
+				// alert("ahaha");
+				$.ajax({                        
+				   type: "POST",                 
+				   url: ruta,                     
+				   data: $("#formTest").serialize(), 
+				   success: function(data)             
+				   {    
+				       
+						if(data == "TRUE" ){
+							if( '<?=$Pregunta; ?>' !== '<?=$Datos_Evaluacion["ultima_pregunta"]; ?>' ){
+								location.href="/evaluacion/servicio/<?=$Servicio; ?>/componente/<?=$componente; ?>/user/<?=$Usuario; ?>/preg/<?=$Datos_Evaluacion["pregunta_siguiente"]; ?>"; 
+							}else{
+								location.href="/comentario/servicio/<?=$Servicio; ?>/componente/<?=$componente; ?>/user/<?=$Usuario; ?>"; 									
+							}
+						}else{
+							  DesactivaCortina();
+							  alertify.error("Debes completar todo el formulario.");	
+						}
+						
+				   }
+				});	
+		    });	
+			
+			$('#btn_prev_form').on('click',function(e){
+				ActivaCortina();
+				var ruta = '/system/_vistas/se_articulo_test.php?Main=siguientePregunta&Servicio=<?=$Servicio; ?>&componente=<?=$componente; ?>&Usuario=<?=$Usuario; ?>&Pregunta=<?=$Pregunta; ?>';
+				$.ajax({                        
+				   type: "POST",                 
+				   url: ruta,                     
+				   data: $("#formTest").serialize(), 
+				   success: function(data)             
+				   {    
+                        
+						// DesactivaCortina();
+						if( '<?=$Pregunta; ?>' !== '<?=$Datos_Evaluacion["primera_pregunta"]; ?>' ){
+							location.href="/evaluacion/servicio/<?=$Servicio; ?>/componente/<?=$componente; ?>/user/<?=$Usuario; ?>/preg/<?=$Datos_Evaluacion["pregunta_anterior"]; ?>"; 
+						}else{
+							location.href="/?Servicio=<?=$Servicio; ?>&componente=<?=$componente; ?>&user=<?=$Usuario; ?>";								
+						}
+							
+				   }
+				});	
+				
+				
+		    });	
+
+			$('#btn_red').on('click',function(e){
+				    location.href="/?Servicio=<?=$Servicio; ?>&componente=<?=$componente; ?>&user=<?=$Usuario; ?>";			
+		    });	
+
+			
+		</script>
+		

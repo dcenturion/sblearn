@@ -1,0 +1,17 @@
+{
+    "name": "alexander/qr",
+    "autoload": {
+        "psr-4": {
+            "Alexander\\Qr\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juan Alexander",
+            "email": "jcrisanto@gmail.com"
+        }
+    ],
+    "require": {
+        "endroid/qr-code": "2.5.1"
+    }
+}

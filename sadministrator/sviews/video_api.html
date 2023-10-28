@@ -1,0 +1,344 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.extend demo</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet">
+		<link rel="stylesheet" href="/sadministrator/sstyles/vendor.min.css">
+		<link rel="stylesheet" href="/sadministrator/sstyles/cosmos.min.css">
+		<link rel="stylesheet" href="/sadministrator/sstyles/application.min.css">
+		
+		<link rel="stylesheet" type="text/css" href="/sadministrator/sstyles/alertify.bootstrap.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/sadministrator/sstyles/alertify.core.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/sadministrator/sstyles/alertify.default.css" media="all">
+		<link rel="stylesheet" type="text/css" href="/sadministrator/sstyles/style_local.css" media="all">
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+		
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+  <body>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+
+			
+    <script>
+window.youtube_api_init = false;
+function VideoPlayer(settings){
+    var vp = this,
+    defaults = {
+        //params
+        id          : null,
+        videoId     : null
+    };
+
+    vp.d = $.extend(true, {}, defaults, settings);
+
+    if(!$('#' + vp.d.id).length){
+        console.log('No exists container id');
+        return;
+    }else if(!vp.d.videoId){
+        console.log('No exists videoId');
+        return;
+    }
+
+    vp.node = {
+        videoplayer             : $('<div>').attr({class:'videoplayer', oncontextmenu: 'return false'}),
+            container           : $('<div>').attr({class:'videoplayer-container'}),
+                iframe          : $('<div>').attr({id: vp.d.id + '_iframe'}),
+            shadow              : $('<div>').attr({class:'videoplayer-shadow'}),
+            controls            : $('<div>').attr({class:'videoplayer-controls'}),
+                range           : $('<div>').attr({class:'videoplayer-controls-range'}),
+                buttons         : $('<div>').attr({class:'videoplayer-controls-buttons'}),
+                    btnPlay     : $('<div>').attr({class:'videoplayer-controls-button'}).html("<i class='zmdi zmdi-pause-circle zmdi-hc-fw' style='font-size:2em;'></i>"),
+                    btnVolume   : $('<div>').attr({class:'videoplayer-controls-button'}).html("<i class='zmdi zmdi-volume-down zmdi-hc-fw' style='font-size:2em;'></i><div class='volume-range' ><div id='volume-range' style='margin-top: -14px;'></div></div>"),
+                    btnTime     : $('<div>').attr({class:'videoplayer-controls-button'}).text('--'),
+                    btnCog      : $('<div>').attr({class:'videoplayer-controls-button'}).html("<i class='icon-cog'><div class='volume-range' style='width:auto;'><select id='cog-select'></select></div></i>"),
+                    btnFull     : $('<div>').attr({class:'videoplayer-controls-button'}).html("<i class='icon-fullscreen'></i>")
+    };
+
+    //render
+    vp.node.videoplayer
+    .append(vp.node.container)
+    .append(vp.node.shadow)
+    .append(vp.node.controls);
+    vp.node.container
+    .append(vp.node.iframe);
+    vp.node.controls
+    .append(vp.node.range)
+    .append(vp.node.buttons);
+    vp.node.buttons
+    .append(vp.node.btnPlay)
+    .append(vp.node.btnVolume)
+    .append(vp.node.btnTime)
+    .append(vp.node.btnCog)
+    .append(vp.node.btnFull);
+
+    //append to container
+    $('#' + vp.d.id).append(vp.node.videoplayer);
+
+    <!-- vp.node.videoplayer.hover(function(){ -->
+        <!-- vp.node.controls.fadeIn(); -->
+    <!-- }, -->
+    <!-- function(){ -->
+        <!-- vp.node.controls.fadeOut(); -->
+    <!-- }); -->
+
+    var videoPlayerTimeOutControl = null;
+
+    <!-- vp.node.videoplayer.on('load', function(){ -->
+        <!-- vp.node.controls.fadeIn(); -->
+        <!-- clearTimeout(videoPlayerTimeOutControl); -->
+
+        <!-- videoPlayerTimeOutControl = setTimeout(function(){ -->
+            <!-- vp.node.controls.fadeOut(); -->
+        <!-- }, 3000); -->
+    <!-- }); -->
+
+    var player,
+    done = false,
+    paused = false,
+    maximize = false,
+    convertToTime = function(seconds){
+        seconds = parseInt(seconds);
+
+        var curDate = new Date();
+        curDate.setHours(0);
+        curDate.setMinutes(0);
+        curDate.setSeconds(0);
+
+        curDate.setSeconds(curDate.getSeconds() + seconds);
+
+        return (curDate.getHours()? curDate.getHours() + ':' : '') + curDate.getMinutes() + ':' + curDate.getSeconds();
+    };
+
+    window.onYouTubeIframeAPIReady = function() {
+        window.youtube_api_init = true;
+
+        player = new YT.Player(vp.d.id + '_iframe', {
+            height: '390',
+            width: '640',
+            videoId: vp.d.videoId,
+            playerVars :{
+                rel: 0,
+                modestbranding: 1,
+                controls: 0,
+                showinfo: 0
+            },
+            events: {
+                onReady: function(event) {
+                    event.target.playVideo();
+                    player.setVolume(100);
+                    player.setPlaybackQuality('auto');
+
+                    var clickPauseHandle = function(){
+                        if(paused){
+                            paused = false;
+                            player.playVideo();
+
+                            vp.node.btnPlay.html("<i class='zmdi zmdi-pause-circle zmdi-hc-fw' style='font-size:2em;'></i>");
+                        }else{
+                            paused = true;
+                            player.pauseVideo();
+
+                            vp.node.btnPlay.html("<i class='zmdi zmdi-play-circle-outline zmdi-hc-fw' style='font-size:2em;'></i>");
+                        }
+                    };
+
+                    //set event buttons
+                    vp.node.shadow.click(clickPauseHandle);
+                    vp.node.btnPlay.click(clickPauseHandle);
+                    vp.node.btnFull.click(function(){
+                        var node = vp.node.videoplayer.get(0);
+
+                        if(maximize){
+                            if(document.exitFullscreen){
+                                document.exitFullscreen();
+                            }else if(document.msExitFullscreen){
+                                document.msExitFullscreen();
+                            }else if(document.mozCancelFullScreen){
+                                document.mozCancelFullScreen();
+                            }else if(document.webkitExitFullscreen){
+                                document.webkitExitFullscreen();
+                            }
+                        }else{
+                            if(node.requestFullscreen){
+                                node.requestFullscreen();
+                            }else if(node.msRequestFullscreen){
+                                node.msRequestFullscreen();
+                            }else if(node.mozRequestFullScreen){
+                                node.mozRequestFullScreen();
+                            }else if(node.webkitRequestFullScreen){
+                                node.webkitRequestFullScreen();
+                            }
+                        }
+                    });
+
+                    $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', function(e){
+                        maximize = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+
+                        if(maximize){
+                            vp.node.btnFull.html("<i class='zmdi zmdi-fullscreen-exit zmdi-hc-fw' style='font-size:2em;'></i>");
+                        }else{
+                            vp.node.btnFull.html("<i class='zmdi zmdi-fullscreen-alt zmdi-hc-fw' style='font-size:2em;'></i>");
+                        }
+                    });
+
+                    vp.node.range.slider({
+                        change: function(event, ui){
+                            if(event.originalEvent){
+                                var duration = player.getDuration(),
+                                time = ui.value / 100 * duration;
+
+                                player.seekTo(time, true);
+                            }
+                        }
+                    });
+
+                    $("#volume-range").slider({
+                        change: function(event, ui){
+                            player.setVolume(ui.value);
+                        },
+                        value: 100
+                    });
+
+                    setInterval(function(){
+                        var time = player.getCurrentTime(),
+                        duration = player.getDuration(),
+                        percent = time / duration * 100;
+
+                        vp.node.range.slider('value', percent);
+
+                        vp.node.btnTime.text(convertToTime(duration) + '/' + convertToTime(time));
+                    }, 1000);
+                },
+                onStateChange: function(event){
+                    if (event.data == YT.PlayerState.PLAYING && !done) {
+                        done = true;
+                        console.log('play!');
+
+                        var qualityNames = {
+                            tiny    : "144p",
+                            small   : "240p",
+                            medium  : "360p",
+                            large   : "480p"
+                        };
+
+                        var qualities = player.getAvailableQualityLevels();
+                        qualities.forEach(function(quality){
+                            $("#cog-select").prepend(
+                                $("<option>").attr({"value": quality}).text((qualityNames[quality])? qualityNames[quality] : quality )
+                            );
+                        });
+
+                        $("#cog-select").on('change', function(){
+                            var quality = $(this).val();
+
+                            player.setPlaybackQuality(quality);
+                        });
+                    }
+
+                    switch(event.data){
+                        case YT.PlayerState.PLAYING:
+                            paused = false;
+
+                            vp.node.btnPlay.html("<i class='zmdi zmdi-pause-circle zmdi-hc-fw' style='font-size:2em;'></i>");
+                            break;
+                        case YT.PlayerState.ENDED:
+                            paused = true;
+
+                            vp.node.btnPlay.html("<i class='zmdi zmdi-play-circle-outline zmdi-hc-fw' style='font-size:2em;'></i>");
+                            break;
+                    }
+                }
+            }
+        });
+    };
+
+    //import youtube api
+    $.getScript("https://www.youtube.com/iframe_api", function(){
+        if(window.youtube_api_init){
+            window.onYouTubeIframeAPIReady();
+        }
+    });
+}
+    </script>
+	            <div id='videoplayer'></div>
+            <script>
+                var vp = new VideoPlayer({
+                    id      : 'videoplayer',
+                    videoId : 'nrHq61ZheJ4'
+                });
+            </script>
+			<style>
+			.videoplayer{
+					position: absolute;
+					left: 0em;
+					top: 0em;
+					width: 100%;
+					height: 100%;
+				}
+				.videoplayer .videoplayer-container{
+					position: absolute;
+					left: 0em;
+					top: 0em;
+					width: 100%;
+					height: 100%;
+				}
+				.videoplayer .videoplayer-container iframe{
+					position: absolute;
+					left: 0em;
+					top: 0em;
+					width: 100%;
+					height: 100%;
+				}
+				.videoplayer .videoplayer-shadow{
+					position: absolute;
+					left: 0em;
+					top: 0em;
+					width: 100%;
+					height: 100%;
+				}
+				.videoplayer .videoplayer-controls{
+					color: #fff;
+					position: absolute;
+					left: 0em;
+					bottom: 0em;
+					width: 100%;
+					background-color:#1975bd;
+				}
+				.videoplayer-controls-buttons{
+					
+				}
+				.videoplayer-controls-buttons .videoplayer-controls-button {
+					box-sizing: border-box;
+					padding: 0em 0.8em;
+					border: none;
+					vertical-align: middle;
+					cursor: pointer;
+					font-size: inherit;
+					line-height: 2.25em;
+					color: currentcolor;
+					display: inline-block;
+				}
+				.videoplayer-controls-buttons .videoplayer-controls-button .volume-range{
+					width: 10em;
+					display: inline-block;
+					margin-left: 1em;
+					font-size: 0.7em;
+				}
+				.videoplayer-controls-buttons .videoplayer-controls-button:hover,
+				.videoplayer-controls-buttons .videoplayer-controls-button.is-active {
+					color: #000;
+				}
+
+				.videoplayer-controls-buttons .videoplayer-controls-button.is-active:hover{
+					color: #555;
+				}
+                .volume-range select option{
+				    font-size:1.5em;
+				}
+			</style>
+  </body>
+</html>
