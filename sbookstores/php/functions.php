@@ -2,7 +2,6 @@
 include('class/lib_pdo.php');
 include('class/lib_imagen.php');
 require_once('vendor/autoload.php');
-date_default_timezone_set('America/Lima');
 require_once('excel_classes_v2/PHPExcel.php');
 require_once('excel_classes_v2/PHPExcel/IOFactory.php');
 require 'vendor/autoload.php';
